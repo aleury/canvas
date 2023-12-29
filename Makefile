@@ -1,4 +1,4 @@
-.PHONY: build-local build-linux deploy cover start test test-integration
+.PHONY: build-local build-linux deploy cover gen start test test-integration
 
 export image := `aws lightsail get-container-images --service-name canvas | jq -r '.containerImages[0].image'`
 
@@ -18,8 +18,10 @@ deploy:
 cover:
 	go tool cover -html=cover.out
 
-start:
+gen:
 	templ generate
+
+start: gen
 	go run cmd/server/*.go
 
 test:
