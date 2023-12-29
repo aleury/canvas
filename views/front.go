@@ -11,6 +11,6 @@ func FrontPage() g.Node {
 		"/",
 		H1(g.Text("Solutions to problems")),
 		P(g.Text("Do you have problems? We also had problems.")),
-		P(g.Raw("Then we creeated the <em>canvas</em> app, and now we don't! 😬")),
+		P(g.Raw("Then we created the <em>canvas</em> app, and now we don't! 😬")),
 	)
 }
