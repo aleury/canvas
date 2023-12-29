@@ -19,6 +19,7 @@ cover:
 	go tool cover -html=cover.out
 
 start:
+	templ generate
 	go run cmd/server/*.go
 
 test:
