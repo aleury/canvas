@@ -4,7 +4,7 @@ import (
 	g "github.com/maragudk/gomponents"
 	"github.com/maragudk/gomponents-heroicons/outline"
 	c "github.com/maragudk/gomponents/components"
-	. "github.com/maragudk/gomponents/html"
+	h "github.com/maragudk/gomponents/html"
 )
 
 func Page(title, path string, body ...g.Node) g.Node {
@@ -12,7 +12,7 @@ func Page(title, path string, body ...g.Node) g.Node {
 		Title:    title,
 		Language: "en",
 		Head: []g.Node{
-			Script(Src("https://cdn.tailwindcss.com?plugins=forms,typography")),
+			h.Script(h.Src("https://cdn.tailwindcss.com?plugins=forms,typography")),
 		},
 		Body: []g.Node{
 			Navbar(path),
@@ -24,10 +24,10 @@ func Page(title, path string, body ...g.Node) g.Node {
 }
 
 func Navbar(path string) g.Node {
-	return Nav(Class("bg-white shadow"),
+	return h.Nav(h.Class("bg-white shadow"),
 		Container(false,
-			Div(Class("flex items-center space-x-4 h-16"),
-				Div(Class("flex-shrink-0"), outline.Globe(Class("h-6 w-6"))),
+			h.Div(h.Class("flex items-center space-x-4 h-16"),
+				h.Div(h.Class("flex-shrink-0"), outline.Globe(h.Class("h-6 w-6"))),
 				NavbarLink("/", "Home", path),
 			),
 		),
@@ -36,7 +36,7 @@ func Navbar(path string) g.Node {
 
 func NavbarLink(path, text, currentPath string) g.Node {
 	active := path == currentPath
-	return A(Href(path), g.Text(text),
+	return h.A(h.Href(path), g.Text(text),
 		c.Classes{
 			"text-lg font-medium hover:text-indigo-900": true,
 			"text-indigo-700": active,
@@ -46,7 +46,7 @@ func NavbarLink(path, text, currentPath string) g.Node {
 }
 
 func Container(padY bool, children ...g.Node) g.Node {
-	return Div(
+	return h.Div(
 		c.Classes{
 			"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8": true,
 			"py-4 sm:py-6 lg:py-8":                   padY,
@@ -56,5 +56,5 @@ func Container(padY bool, children ...g.Node) g.Node {
 }
 
 func Prose(children ...g.Node) g.Node {
-	return Div(Class("prose lg:prose-lg xl:prose-xl prose-indigo"), g.Group(children))
+	return h.Div(h.Class("prose lg:prose-lg xl:prose-xl prose-indigo"), g.Group(children))
 }
